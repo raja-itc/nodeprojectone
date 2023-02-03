@@ -28,7 +28,7 @@ app.post('/auth', async function(request, response) {
   const returnValue = await mydb.validateUser(username,password)
   console.log("The returnValue from validateUser method is: ",returnValue)
   if (username && password) {
-    if(returnValue == 1){
+    if(returnValue){
       console.log("The condition evaluated to true and that's y I m here")
     	response.redirect('/home')
 		} else {

@@ -1,19 +1,19 @@
-var express = require('express');
-const mysql = require('mysql')
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Airtel123$$',
-  database: 'nodeproject'
-})
-connection.connect()
+var express = require('express')
+const mysql = require('mysql2/promise')
+ 
 async function validateUser(userName, Password){
-  var myVal = 0
-  const x = await connection.query('SELECT * FROM users WHERE user_name = ? AND pwd = ?', [userName, Password], function(error, results, fields) {
-      if (error) throw error
-      myVal = results.length
-    })
-  return myVal
+  const connection = await mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Airtel123$$',
+    database: 'nodeproject'
+  })
+  connection.connect()
+  const [results, fields] = await connection.execute('SELECT * FROM users WHERE user_name = ? AND pwd = ?', [userName, Password])
+  console.log("Rows are: ",results.length)
+  if (results.length > 0)
+    return true
+  else
+    return false
 }
-
 module.exports={ validateUser }
