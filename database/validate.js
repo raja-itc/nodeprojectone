@@ -3,10 +3,10 @@ const mysql = require('mysql2/promise')
  
 async function validateUser(userName, Password){
   const connection = await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Airtel123$$',
-    database: 'nodeproject'
+    host: '',
+    user: '',
+    password: '',
+    database: ''
   })
   connection.connect()
   const [results, fields] = await connection.execute('SELECT * FROM users WHERE user_name = ? AND pwd = ?', [userName, Password])

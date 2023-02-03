@@ -6,10 +6,10 @@ var hbs = require('hbs')
 const app = express()
 const port = 3000
 const connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : 'Airtel123$$',
-	database : 'nodeproject'
+	host     : '',
+	user     : '',
+	password : '',
+	database : ''
 });
 
 app.set('view engine','hbs')
