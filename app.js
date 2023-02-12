@@ -23,7 +23,8 @@ app.post('/auth', async function(request, response) {
 
   if (username && password) {
     if(returnValue){
-        response.redirect('/home')
+        response.render('address')
+        //response.redirect('/home')
 	} else {
     	response.send('Incorrect Username and/or Password!');
 	}
