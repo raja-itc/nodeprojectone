@@ -5,12 +5,6 @@ const mysql = require('mysql');
 var hbs = require('hbs')
 const app = express()
 const port = 3000
-const connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : 'Airtel123$$',
-	database : 'nodeproject'
-});
 
 app.set('view engine','hbs')
 app.use(express.json());
@@ -26,16 +20,14 @@ app.post('/auth', async function(request, response) {
   let username = request.body.username
   let password = request.body.password
   const returnValue = await mydb.validateUser(username,password)
-  console.log("The returnValue from validateUser method is: ",returnValue)
+
   if (username && password) {
     if(returnValue){
-      console.log("The condition evaluated to true and that's y I m here")
-    	response.redirect('/home')
-		} else {
-      console.log("The condition evaluated to false and that's y I m here")
-			response.send('Incorrect Username and/or Password!');
-		}			
-		response.end();
+        response.redirect('/home')
+	} else {
+    	response.send('Incorrect Username and/or Password!');
+	}
+	response.end();
   }
 })
 
