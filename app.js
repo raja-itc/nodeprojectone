@@ -11,13 +11,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/', (req, res) => {
- res.render('login')
+app.get('/', (req, res) => { res.render('login')})
+
+app.post('/auth', async function(request, response){
+    let username = request.body.username
+    let password = request.body.password
+    const returnValue = await mydb.validateUser(username,password)
+    if (username && password) {
+        if(returnValue){
+          response.render('address')
+    	} else {
+          response.send('Incorrect Username and/or Password!');
+    	}
+    }
 })
-//To test
-app.post('/english', function(req, res)){
-    response.redirect('/home')
-}
+
 app.get('/home', function(request, response) {
 	response.send('Welcome ')
 })

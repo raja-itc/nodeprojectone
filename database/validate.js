@@ -9,8 +9,7 @@ async function validateUser(userName, Password){
     database: 'nodeproject'
   })
   connection.connect()
-  const [results, fields] = await connection.execute('SELECT * FROM users WHERE user_name = ? AND pwd = ?', [userName, Password])
-  console.log("Rows are: ",results.length)
+  const [results, fields] = await connection.execute('SELECT * FROM users WHERE userid = ? AND pass_word = ?', [userName, Password])
   if (results.length > 0)
     return true
   else
