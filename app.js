@@ -5,13 +5,6 @@ const mysql = require('mysql');
 var hbs = require('hbs')
 const app = express()
 const port = 3000
-const connection = mysql.createConnection({
-	host     : '',
-	user     : '',
-	password : '',
-	database : ''
-});
-
 app.set('view engine','hbs')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,20 +22,27 @@ app.post('/auth', async function(request, response) {
   console.log("The returnValue from validateUser method is: ",returnValue)
   if (username && password) {
     if(returnValue){
-      console.log("The condition evaluated to true and that's y I m here")
-    	response.redirect('/home')
-		} else {
-      console.log("The condition evaluated to false and that's y I m here")
-			response.send('Incorrect Username and/or Password!');
-		}			
+        //response.redirect('/home')
+        response.render('address')
+        //response.redirect('/address')
+
+	} else {
+		response.send('Incorrect Username and/or Password!');
+	}
 		response.end();
   }
+})
+
+/*app.get('/address', function(request, response) {
+    response.send('Welcome to address');
+	//app.route('/address')
+	response.end()
 })
 
 app.get('/home', function(request, response) {
 	response.send('Welcome ');
 	response.end();
-})
+})*/
 
 app.listen(port, () => {
   console.log(`Node Project app listening on port ${port}`)
