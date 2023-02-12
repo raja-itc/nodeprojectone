@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/', (req, res) => {
  res.render('login')
 })
-
+//To test
 app.post('/english', function(req, res)){
     response.redirect('/home')
 }
