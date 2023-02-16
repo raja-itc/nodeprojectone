@@ -6,7 +6,7 @@ var hbs = require('hbs')
 const app = express()
 const port = 3000
 const loginRouter = require('./routes/login')
-
+const usersRouter = require('./routes/users')
 
 app.set('view engine','hbs')
 app.use(express.json());
@@ -16,8 +16,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 //app.get('/', (req, res) => { res.render('login')})
 
 app.use('/', loginRouter)
-
-app.post('/auth', async function(request, response){
+app.post('/auth', usersRouter)
+/*app.post('/auth', async function(request, response){
     let username = request.body.username
     let password = request.body.password
     const returnValue = await mydb.validateUser(username,password)
@@ -28,7 +28,7 @@ app.post('/auth', async function(request, response){
           response.send('Incorrect Username and/or Password!');
     	}
     }
-})
+})*/
 
 app.get('/home', function(request, response) {
 	response.send('Welcome ')
