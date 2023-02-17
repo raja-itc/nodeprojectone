@@ -1,9 +1,23 @@
-var express = require('express');
+var express = require('express')
 var router = express.Router();
+const mydb = require('../database/validate.js')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+/* Validate user.*/
 
-module.exports = router;
+router.post('/auth', async function(request, response){
+       console.log('at 1 in users.js')
+       let username = request.body.username
+       let password = request.body.password
+       const returnValue = await mydb.validateUser(username,password)
+       console.log('at 2 in users.js')
+       if (username && password) {
+             if(returnValue){
+                  response.render('address')
+             } else {
+                  response.send('Incorrect Username and/or Password!')
+             }
+       }
+       response.send('Ird!')
+ })
+
+module.exports = { router }

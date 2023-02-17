@@ -1,6 +1,7 @@
 var express = require('express')
 const mysql = require('mysql2/promise')
- 
+var mydb = require('../database/database.js')
+
 async function validateUser(userName, Password){
   const connection = await mysql.createConnection({
     host: 'localhost',
@@ -15,4 +16,5 @@ async function validateUser(userName, Password){
   else
     return false
 }
+
 module.exports={ validateUser }

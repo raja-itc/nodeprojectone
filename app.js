@@ -4,9 +4,10 @@ const mydb = require('./database/validate.js')
 const mysql = require('mysql')
 var hbs = require('hbs')
 const app = express()
+const router = express.Router()
 const port = 3000
-const loginRouter = require('./routes/login')
-const usersRouter = require('./routes/users')
+var loginRouter = require('./routes/login')
+var usersRouter = require('./routes/users')
 
 app.set('view engine','hbs')
 app.use(express.json());
@@ -16,8 +17,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 //app.get('/', (req, res) => { res.render('login')})
 
 app.use('/', loginRouter)
-app.post('/auth', usersRouter)
-/*app.post('/auth', async function(request, response){
+/*app.use('/auth', usersRouter)
+app.post('/auth', (req, res) => {
+    res.send('usersRouter')
+})*/
+app.post('/auth', async function(request, response){
     let username = request.body.username
     let password = request.body.password
     const returnValue = await mydb.validateUser(username,password)
@@ -28,7 +32,7 @@ app.post('/auth', usersRouter)
           response.send('Incorrect Username and/or Password!');
     	}
     }
-})*/
+})
 
 app.get('/home', function(request, response) {
 	response.send('Welcome ')
