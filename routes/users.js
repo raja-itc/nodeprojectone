@@ -20,4 +20,4 @@ router.post('/auth', async function(request, response){
        response.send('Ird!')
  })
 
-module.exports = { router }
+module.exports = router
