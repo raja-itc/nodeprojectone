@@ -17,10 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 //app.get('/', (req, res) => { res.render('login')})
 
 app.use('/', loginRouter)
-/*app.use('/auth', usersRouter)
-app.post('/auth', (req, res) => {
+app.use('/auth', usersRouter)
+/*app.post('/auth', (req, res) => {
     res.send('usersRouter')
-})*/
+})
 app.post('/auth', async function(request, response){
     let username = request.body.username
     let password = request.body.password
@@ -32,7 +32,7 @@ app.post('/auth', async function(request, response){
           response.send('Incorrect Username and/or Password!');
     	}
     }
-})
+})*/
 
 app.get('/home', function(request, response) {
 	response.send('Welcome ')
@@ -41,3 +41,5 @@ app.get('/home', function(request, response) {
 app.listen(port, () => {
   console.log(`Node Project app listening on port ${port}`)
 })
+
+module.exports = { router }
