@@ -13,7 +13,7 @@ app.set('view engine','hbs')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
-
+//Routers go here
 app.use('/', loginRouter)
 app.use('/users', usersRouter)
 app.get('/home', function(request, response) {
