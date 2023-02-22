@@ -8,7 +8,7 @@ const router = express.Router()
 const port = 3000
 var loginRouter = require('./routes/login')
 var usersRouter = require('./routes/users')
-var usersRouter = require('./routes/address')
+//var usersRouter = require('./routes/address')
 app.set('view engine','hbs')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))

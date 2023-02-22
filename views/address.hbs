@@ -9,8 +9,33 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
         <!-- include the stylesheet file -->
         <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 	</head>
 	<body>
 	    <p>In the address book and will show the addresses shortly!!</p>
+	    <table width='100%'>
+           <tr>
+                <td>UserID</td>
+                <td>FisrtName</td>
+                <td>lastname</td>
+                <td>housenumber</td>
+                <td>area</td>
+                <td>city</td>
+                <td>zipcode</td>
+                <td>phonenumber</td>
+           </tr>
+          {{#each retadr}}
+            <tr>
+                <td>{{userid}}</td>
+                <td>{{firstname}}</td>
+                <td>{{lastname}}</td>
+                <td>{{housenumber}}</td>
+                <td>{{area}}</td>
+                <td>{{city}}</td>
+                <td>{{zipcode}}</td>
+                <td>{{phonenumber}}</td>
+            </tr>
+          {{/each}}
+        </ul>
 	</body>
 </html>
