@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router();
 const mydb = require('../database/validate.js')
 const addr = require('../database/address.js')
+
 /* Validate user.*/
 
 router.post('/auth', async function(request, response){
